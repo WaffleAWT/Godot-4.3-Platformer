@@ -1,0 +1,25 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1735465658
+default_bus_layout.tres::AudioBusLayout::6718274219114179575::1730936001::0::1::::<><>::
+icon.svg::CompressedTexture2D::7012161345367679148::1729138168::1729138184::1::::<><>::
+::res://Assets/::1729197751
+::res://Assets/Audio/::1729197759
+Double Jump.wav::AudioStreamWAV::649922297205990623::1729197685::1729197759::1::::<><>::
+Jump.wav::AudioStreamWAV::7925151213532924159::1729197654::1729197759::1::::<><>::
+Land.wav::AudioStreamWAV::5925043307063970722::1729197700::1729197759::1::::<><>::
+::res://Assets/Textures/::1729149849
+Background.png::CompressedTexture2D::5901819889527338323::1728240213::1729138254::1::::<><>::
+Ground.png::CompressedTexture2D::4915727864753460235::1728240130::1729138254::1::::<><>::
+Player.png::CompressedTexture2D::3982670092620146190::1691855103::1729138254::1::::<><>::
+::res://Data/::1730936005
+graphics.tres::SpriteFrames::1409674904983143948::1730936005::0::1::::<><>::uid://bw0h82x2cf1jm::::res://Assets/Textures/Player.png
+::res://Scenes/::1730936005
+ghost_effect.tscn::PackedScene::7619979771277922937::1729145129::0::1::::<><>::uid://uc4e0r547xgu::::res://Data/graphics.tres
+player.tscn::PackedScene::3644206209956720488::1730936005::0::1::::<><>::res://Scripts/player.gd<>uid://dgtf7oj613nqf::::res://Scenes/ghost_effect.tscn<>uid://uc4e0r547xgu::::res://Data/graphics.tres<>uid://d3qv2cpcfhfqd::::res://Scenes/puff_effect.tscn<>uid://dk6ac2q21utpv::::res://Assets/Audio/Jump.wav<>uid://ji3ei3amt3l8::::res://Assets/Audio/Double Jump.wav<>uid://cqoeuk3mwpjiw::::res://Assets/Audio/Land.wav
+prototype.tscn::PackedScene::5899129087873229929::1730936005::0::1::::<><>::uid://ccbhk4u5jj35h::::res://Assets/Textures/Ground.png<>uid://br6jsqxucn4bk::::res://Scenes/player.tscn<>res://Scripts/Shaders/ripple.gdshader<>res://Scripts/camera.gd
+puff_effect.tscn::PackedScene::9158903118609294783::1729149688::0::1::::<><>::
+::res://Scripts/::1729198530
+camera.gd::GDScript::-1::1729148382::0::1::::<>Camera2D<>::
+player.gd::GDScript::-1::1729198530::0::1::::<>CharacterBody2D<>::
+::res://Scripts/Shaders/::1730936069
+ripple.gdshader::Shader::-1::1730936069::0::1::::<><>::

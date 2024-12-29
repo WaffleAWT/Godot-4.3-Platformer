@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://br6jsqxucn4bk"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_y0sst"]
+[ext_resource type="PackedScene" uid="uid://dgtf7oj613nqf" path="res://Scenes/ghost_effect.tscn" id="2_nsb3i"]
+[ext_resource type="SpriteFrames" uid="uid://uc4e0r547xgu" path="res://Data/graphics.tres" id="2_wf1em"]
+[ext_resource type="PackedScene" uid="uid://d3qv2cpcfhfqd" path="res://Scenes/puff_effect.tscn" id="3_n4cxo"]
+[ext_resource type="AudioStream" uid="uid://dk6ac2q21utpv" path="res://Assets/Audio/Jump.wav" id="5_3k2sh"]
+[ext_resource type="AudioStream" uid="uid://ji3ei3amt3l8" path="res://Assets/Audio/Double Jump.wav" id="6_i5xlq"]
+[ext_resource type="AudioStream" uid="uid://cqoeuk3mwpjiw" path="res://Assets/Audio/Land.wav" id="7_6ybrv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol6ya"]
+size = Vector2(8, 15)
+
+[sub_resource type="Animation" id="Animation_0qq6w"]
+resource_name = "squash"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.25), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3ca77"]
+resource_name = "stretch"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_243x8"]
+_data = {
+"squash": SubResource("Animation_0qq6w"),
+"stretch": SubResource("Animation_3ca77")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("graphics", "wall_ray", "wall_timer", "jump_sound_effect", "double_jump_sound_effect", "land_sound_effect")]
+z_index = 1
+script = ExtResource("1_y0sst")
+graphics = NodePath("Graphics")
+wall_ray = NodePath("WallRay")
+wall_timer = NodePath("WallTimer")
+ghost_effect_scene = ExtResource("2_nsb3i")
+puff_effect_scene = ExtResource("3_n4cxo")
+jump_sound_effect = NodePath("JumpSound")
+double_jump_sound_effect = NodePath("DoubleJumpSound")
+land_sound_effect = NodePath("LandSound")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Graphics" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_wf1em")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ol6ya")
+
+[node name="WallRay" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(5, 0)
+
+[node name="WallTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AirAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_243x8")
+}
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3k2sh")
+
+[node name="DoubleJumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_i5xlq")
+volume_db = -4.0
+pitch_scale = 2.0
+bus = &"Reverb"
+
+[node name="LandSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6ybrv")
+volume_db = 2.0
+pitch_scale = 2.0

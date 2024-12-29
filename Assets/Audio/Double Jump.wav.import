@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ji3ei3amt3l8"
+path="res://.godot/imported/Double Jump.wav-14a05a8d784540e937baf0b8e4820f99.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Double Jump.wav"
+dest_files=["res://.godot/imported/Double Jump.wav-14a05a8d784540e937baf0b8e4820f99.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
